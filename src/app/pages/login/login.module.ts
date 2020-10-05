@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-m
   imports: [
     CommonModule,
     LoginRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FlexLayoutModule
   ]
 })
 export class LoginModule { }
