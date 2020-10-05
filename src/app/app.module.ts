@@ -13,8 +13,7 @@ import { AngularMaterialModule } from './shared/angular-material/angular-materia
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    AngularMaterialModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
