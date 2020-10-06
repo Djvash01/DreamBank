@@ -11,6 +11,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { environment } from 'src/environments/environment';
 import { UserState } from './store/user/user.state';
 import { Token_Interceptor } from './interceptors/token.interceptor';
+import { MockApiRest } from './interceptors/mock-api-rest.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,10 @@ import { Token_Interceptor } from './interceptors/token.interceptor';
       disabled: environment.production
     })
   ],
-  providers: [Token_Interceptor],
+  providers: [
+    Token_Interceptor,
+    MockApiRest
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
