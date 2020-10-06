@@ -6,8 +6,8 @@
     </div>
     <div fxLayout="row">
         <div fxFlex="50%" fxFlexOffset="25%">
-            <mat-card>
-                <mat-card-header fxLayoutAlign="center center">
+            <mat-card fxLayout="column">
+                <mat-card-header fxLayout="column" fxLayoutAlign="center center">
                     <mat-card-subtitle >
                         <span class="font-blue-24 custom-subtitle">Welcome back</span>
                         <mat-divider class="underline" [inset]="true"></mat-divider>
@@ -16,8 +16,51 @@
                     <mat-card-title class="custom-title">
                         <span class="font-blue-44">Login</span>
                     </mat-card-title>
+
+                    <div class="font-blue-14 text-login">
+                        <p>
+                            For your money safety, please delete all extensions<br>
+                            for the browser you use to log in to your wallet
+                        </p>
+                    </div>
                 </mat-card-header>
+                <form (ngSubmit)="submit()" [formGroup]="loginForm">
+                    <mat-card-content fxLayout="column" fxLayoutAlign="center stretch" fxFlex="50%" fxFlexOffset="25%">
+                        
+                        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between center">                      
+                            <mat-label class="font-blue-14">Login</mat-label>
+                            <mat-form-field appearance="outline" color="primary" fxFlex="80%">
+                                <input class="font-blue-14" type="text" matInput formControlName="login">
+                                <mat-icon *ngIf="formControls.login.valid" class="done" matSuffix>done</mat-icon>
+                                <mat-icon *ngIf="formControls.login.invalid && formControls.login.dirty" color="warn" matSuffix>clear</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayout.lt-md="column"  fxLayoutAlign="space-between center">
+                            <mat-label class="font-blue-14">Password</mat-label>
+                            <mat-form-field appearance="outline" color="primary" fxFlex="80%">
+                                <input class="font-blue-14" type="password" matInput formControlName="password">
+                                <div class="font-blue-11 link-ref" *ngIf="formControls.password.pristine" matSuffix>Forgot Password?</div>
+                                <mat-icon *ngIf="formControls.password.valid" class="done" matSuffix>done</mat-icon>
+                                <mat-icon *ngIf="formControls.password.invalid && formControls.password.dirty" color="warn" matSuffix>clear</mat-icon>
+                                <mat-error>{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <button mat-raised-button color="primary" [disabled]="loginForm.invalid" fxFlex="80%">
+                                Login
+                            </button>
+                        </div>
+                    </mat-card-content>
+                </form>
+                <footer  fxLayout="row" fxLayoutAlign="space-around start">
+                    <div class="font-blue-14"  fxLayout="column" fxLayoutAlign="center start">
+                        <span class="font-blue-24 custom-subtitle">Don't have an account?</span>
+                        <span class="font-blue-14">Register here <mat-icon >arrow_right_alt</mat-icon></span>
+                    </div>
+                    <button  mat-raised-button color="accent">Create account</button>
+                </footer>
             </mat-card>
         </div>
     </div>
 </div>
+
