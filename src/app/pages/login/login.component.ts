@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store, Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user.model';
 import { ParticlesConfig } from 'src/app/shared/particles/particles-config';
+import { UserState } from 'src/app/store/user/user.state';
 
 declare const particlesJS: any;
 
@@ -13,7 +17,10 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  @Select(UserState.getUserData) userData : Observable<User>;
+  
+
+  constructor(private fb: FormBuilder, private store: Store) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
