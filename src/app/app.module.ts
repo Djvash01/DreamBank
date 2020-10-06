@@ -10,6 +10,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { environment } from 'src/environments/environment';
 import { UserState } from './store/user/user.state';
+import { Token_Interceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { UserState } from './store/user/user.state';
       disabled: environment.production
     })
   ],
-  providers: [],
+  providers: [Token_Interceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
