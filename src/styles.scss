@@ -51,7 +51,18 @@ $info: #428bca;
 //fonts
 .success{
   color: $success;
-} 
+}
+
+.success-snackbar{
+  background-color: $secundary;
+  color: $primary;
+}
+
+.error-snackbar{
+  background-color: #F44336;
+  color: white;
+}
+
 
 .link-ref{
   color: $primary;

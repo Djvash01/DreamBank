@@ -12,6 +12,9 @@ import { environment } from 'src/environments/environment';
 import { UserState } from './store/user/user.state';
 import { Token_Interceptor } from './interceptors/token.interceptor';
 import { MockApiRest } from './interceptors/mock-api-rest.interceptor';
+import { AngularMaterialModule } from './shared/angular-material/angular-material.module';
+import { ErrorHandler } from './interceptors/errors-handle.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { MockApiRest } from './interceptors/mock-api-rest.interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AngularMaterialModule,
     NgxsModule.forRoot([UserState],
       { developmentMode: !environment.production }
     ),
@@ -33,6 +37,7 @@ import { MockApiRest } from './interceptors/mock-api-rest.interceptor';
     })
   ],
   providers: [
+    ErrorHandler,
     Token_Interceptor,
     MockApiRest
   ],
