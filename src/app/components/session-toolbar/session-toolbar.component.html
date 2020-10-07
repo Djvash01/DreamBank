@@ -1,0 +1,21 @@
+<mat-toolbar *ngIf="$userData | async as user" fxLayout="row" fxLayoutAlign="end center">
+  
+    <button mat-icon-button>
+      <mat-icon matBadge="3" matBadgeColor="primary" matBadgeSize="small">notifications</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon matBadge="1" matBadgeColor="primary" matBadgeSize="small">mode_comment</mat-icon>
+    </button>
+    <button mat-button [matMenuTriggerFor]="menu" class="font-blue-11">
+        <img  class="avatar" [src]="user.avatar" alt="Avatar">
+        {{user.name}}
+        <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            Logout
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </mat-menu>
+  
+</mat-toolbar>

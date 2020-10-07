@@ -16,15 +16,15 @@ export class AuthService {
   }
 
   loggedIn() {
-    return !!localStorage.getItem('Authorization');
+    return !!sessionStorage.getItem('Authorization');
   }
 
   logout() {
-    localStorage.removeItem('Authorization');
+    sessionStorage.removeItem('Authorization');
     this.router.navigate(['login']);
   }
 
   getToken() {
-    return localStorage.getItem('Authorization');
+    return sessionStorage.getItem('Authorization');
   }
 }

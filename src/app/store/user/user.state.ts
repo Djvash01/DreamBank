@@ -8,11 +8,7 @@ export class UserStateModel {
 }
 
 const defaults = {
-  user: {
-    id: '123456',
-    name: 'david yepes',
-    lastEntry: new Date()
-  }
+  user: null
 };
 
 @State<UserStateModel>({

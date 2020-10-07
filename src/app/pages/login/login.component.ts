@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store, Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ParticlesConfig } from 'src/app/shared/particles/particles-config';
 import { getUser } from 'src/app/store/user/user.actions';
-import { UserState } from 'src/app/store/user/user.state';
 
 declare const particlesJS: any;
 
@@ -18,10 +15,7 @@ declare const particlesJS: any;
 })
 export class LoginComponent implements OnInit {
 
-  public loginForm: FormGroup;
-
-  @Select(UserState.getUserData) userData : Observable<User>;
-  
+  public loginForm: FormGroup;  
 
   constructor(
     private fb: FormBuilder, 
@@ -46,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.authService.signin(this.loginForm.value).subscribe(
       res => {
         console.log(res);
-        localStorage.setItem('Authorization', res.token);
+        sessionStorage.setItem('Authorization', res.token);
         this.store.dispatch(new getUser(res.user))
         this.router.navigate(['dashboard']);
     },

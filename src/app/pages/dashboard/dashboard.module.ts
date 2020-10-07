@@ -6,10 +6,11 @@ import { DashboardComponent } from './dashboard.component';
 import { MenuComponent } from '../../components/menu/menu.component';
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SessionToolbarComponent } from '../../components/session-toolbar/session-toolbar.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, MenuComponent],
+  declarations: [DashboardComponent, MenuComponent, SessionToolbarComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

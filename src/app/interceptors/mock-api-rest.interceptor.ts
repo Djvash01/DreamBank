@@ -10,8 +10,9 @@ import { Observable, throwError, of } from 'rxjs';
 let users = [{
   id: '123456',
   password: '1234',
-  name: 'John Doe',
+  name: 'Erick Van Hellen',
   lastLogin: new Date(),
+  avatar:'https://randomuser.me/api/portraits/thumb/lego/6.jpg',
   accounts: [],
   wallets: [],
   notifications: [],
@@ -21,6 +22,7 @@ let users = [{
   password: '1234',
   name: 'Persona prueba',
   lastLogin: new Date(),
+  avatar: 'https://randomuser.me/api/portraits/thumb/lego/8.jpg',
   accounts: [],
   wallets: [],
   notifications: [],
