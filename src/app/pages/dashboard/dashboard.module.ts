@@ -8,10 +8,11 @@ import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-m
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SessionToolbarComponent } from '../../components/session-toolbar/session-toolbar.component';
 import { InfoToolbarComponent } from '../../components/info-toolbar/info-toolbar.component';
+import { AccountSummaryComponent } from '../account-summary/account-summary.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, MenuComponent, SessionToolbarComponent, InfoToolbarComponent],
+  declarations: [DashboardComponent, MenuComponent, SessionToolbarComponent, InfoToolbarComponent, AccountSummaryComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
