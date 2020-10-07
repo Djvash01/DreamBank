@@ -1,0 +1,31 @@
+@import '../../../styles.scss';
+
+.info-toolbar{
+    height: 135px;
+}
+
+.avatar{
+    border-radius: 50%;
+}
+
+.info-section{
+    padding: 0 3em;
+    border-right: 1px solid $secundary;
+}
+
+.info-title{
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.info-subtitle{
+    font-size: 13px;
+    font-weight: 100;
+    line-height: 0;
+}
+
+.btn-account{
+    border: 1px solid $secundary !important;
+    color: white !important;
+    width: 50%; 
+}
