@@ -9,7 +9,10 @@ export class MenuComponent implements OnInit {
 
 
   options = {
-    accounts:['Account Summary','Account'],
+    accounts:[
+    {description:'Account Summary', link:'/dashboard/accountsummary'},
+    {description:'Account', link:'/dashboard/accountsummary'}
+  ],
     transactions:['Inquire Transactions', 'Inquire Transactions', 'Bill Payments'],
     services: [ 'Account Statements', 'Enroll New Account', 'Enroll a Credit Card', 'Card Replacement', 'New Checkbook']
   }
