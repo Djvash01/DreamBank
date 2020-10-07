@@ -46,7 +46,7 @@ div#particles-js canvas.particles-js-canvas-el {
 $primary: #0D47A1;
 $secundary: #18FFFF;
 $success: #5cb85c;
-$info: #428bca;
+$info: #021aee;
 
 //fonts
 .success{
@@ -93,8 +93,28 @@ footer{
   margin-bottom: 32px !important;
 }
 
+.font-blue-11{
+  color: $primary;
+  font-size: 11px;
+}
+
+.font-blue-14{
+  color: $primary;
+  font-size: 14px;
+}
+
+.font-cyan-14{
+  color: $secundary;
+  font-size: 14px;
+}
+
 .font-blue-24{
   color: $primary;
+  font-size: 24px;
+}
+
+.font-cyan-24{
+  color: $secundary;
   font-size: 24px;
 }
 
@@ -103,15 +123,7 @@ footer{
   font-size: 44px;
 }
 
-.font-blue-14{
-  color: $primary;
-  font-size: 14px;
-}
 
-.font-blue-11{
-  color: $primary;
-  font-size: 11px;
-}
 
 .text-login{
   margin: 1em 0;
