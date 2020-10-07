@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { User } from 'src/app/models/user.model';
-import { getUser } from './user.actions';
+import { getUser, getUserAccounts } from './user.actions';
 
 export class UserStateModel {
   public user: User;
@@ -29,6 +29,16 @@ export class UserState {
     setState({
       ...state,
       user: payload
+    });
+  }
+
+  @Action(getUserAccounts)
+  getUserAccounts({getState,patchState}:StateContext<UserStateModel>, { payload }:getUserAccounts){
+    const state = getState();
+    let user = state;
+    user.user.accounts = payload;
+    patchState({
+        user: user.user
     });
   }
 }

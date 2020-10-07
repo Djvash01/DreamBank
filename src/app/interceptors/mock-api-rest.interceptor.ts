@@ -14,9 +14,7 @@ let users = [{
   lastLogin: new Date(),
   avatar:'https://randomuser.me/api/portraits/thumb/lego/6.jpg',
   accounts: [],
-  wallets: [],
-  notifications: [],
-  messages: [],
+  wallets: []
 },{
   id: '987654321',
   password: '1234',
@@ -24,9 +22,55 @@ let users = [{
   lastLogin: new Date(),
   avatar: 'https://randomuser.me/api/portraits/thumb/lego/8.jpg',
   accounts: [],
-  wallets: [],
-  notifications: [],
-  messages: [],
+  wallets: []
+}];
+
+let allAccounts =  [{
+  idUser:'123456',
+  accountsUser: [
+      {
+          id: '1234557121',
+          name: "Dan",
+          icon: "payments",
+          type: "Checking",
+          status: 'Active',
+          currency: 'USD',
+          balance: 3500,
+          transactions: []
+      },{
+          id: '9991212',
+          name: "nie",
+          icon: "credit_card",
+          type: "Saving",
+          status: 'Active',
+          currency: 'USD',
+          balance: 600.5,
+          transactions: []
+      },{
+          id: '12124121',
+          name: "idk",
+          icon: "credit_card",
+          type: "Saving",
+          status: 'Desactived',
+          currency: 'USD',
+          balance: 1.14,
+          transactions: []
+      }
+  ]
+},
+{
+  idUser:'987654321',
+  accountsUser: [
+  {
+      id: '99999999999',
+      name: "travels",
+      icon: "card_travel",
+      type: "Checking",
+      status: 'Active',
+      currency: 'USD',
+      balance: 1000.1,
+      transactions: []
+  }]  
 }];
 
 @Injectable()
@@ -39,6 +83,8 @@ export class MockApiRestInterceptor implements HttpInterceptor {
     switch (true) {
       case (url.endsWith('/signin') && method === 'POST'):
         return this.signin(body);    
+      case (url.endsWith('/accounts') && method === 'POST'):
+        return this.getAccountsByUser(body, headers);    
       default:
         return next.handle(request);
     }
@@ -53,6 +99,13 @@ export class MockApiRestInterceptor implements HttpInterceptor {
     return this.successResponse({token,user});
   }
 
+  getAccountsByUser(body, headers){
+    if(!this.isLoggedIn(headers))return this.unauthorized();
+    const {id} = body;
+    const accounts = allAccounts.find(item =>item.idUser === id);
+    return this.successResponse(accounts.accountsUser);
+  }
+
    errorResponse(message) {
     return throwError(new HttpErrorResponse({ error: { message } }));
   }
@@ -60,6 +113,15 @@ export class MockApiRestInterceptor implements HttpInterceptor {
    successResponse(body?) {
     return of(new HttpResponse({ status: 200, body }))
   }
+
+  unauthorized() {
+    return throwError({ status: 401, error: { message: 'Unauthorized' } });
+}
+
+  isLoggedIn(headers) {
+    return headers.get('Authorization') === 'Bearer super secure token';
+}
+
 }
 
 export const MockApiRest = {

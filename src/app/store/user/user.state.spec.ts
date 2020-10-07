@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { UserState } from './user.state';
-import { setUser } from './user.actions';
+import { getUser } from './user.actions';
 
 describe('User actions', () => {
   let store: Store;
@@ -14,7 +14,7 @@ describe('User actions', () => {
   }));
 
   it('should create an action and add an item', () => {
-    store.dispatch(new setUser('item-1'));
+    store.dispatch(new getUser(null));
     store.select(state => state.user.items).subscribe((items: string[]) => {
       expect(items).toEqual(jasmine.objectContaining([ 'item-1' ]));
     });
