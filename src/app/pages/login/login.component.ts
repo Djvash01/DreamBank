@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
   submit(){
     this.authService.signin(this.loginForm.value).subscribe(
       res => {
-        console.log(res);
         sessionStorage.setItem('Authorization', res.token);
         this.store.dispatch(new getUser(res.user))
         this.router.navigate(['dashboard']);

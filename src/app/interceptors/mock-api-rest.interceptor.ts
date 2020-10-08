@@ -30,7 +30,7 @@ let allAccounts =  [{
   accountsUser: [
       {
           id: '1234557121',
-          name: "Dan",
+          name: "travel",
           icon: "payments",
           type: "Checking",
           status: 'Active',
@@ -39,7 +39,7 @@ let allAccounts =  [{
           transactions: []
       },{
           id: '9991212',
-          name: "nie",
+          name: "University",
           icon: "credit_card",
           type: "Saving",
           status: 'Active',
@@ -48,7 +48,7 @@ let allAccounts =  [{
           transactions: []
       },{
           id: '12124121',
-          name: "idk",
+          name: "npi",
           icon: "credit_card",
           type: "Saving",
           status: 'Desactived',
@@ -101,8 +101,8 @@ export class MockApiRestInterceptor implements HttpInterceptor {
 
   getAccountsByUser(body, headers){
     if(!this.isLoggedIn(headers))return this.unauthorized();
-    const {id} = body;
-    const accounts = allAccounts.find(item =>item.idUser === id);
+    const id = body;
+    const accounts = allAccounts.find(item =>item.idUser === id);    
     return this.successResponse(accounts.accountsUser);
   }
 

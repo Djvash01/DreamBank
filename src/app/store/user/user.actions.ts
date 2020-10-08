@@ -9,5 +9,5 @@ export class getUser {
 
 export class getUserAccounts {
   static readonly type = '[User] get accounts';
-  constructor(public payload: Account[]) { }
+  constructor(public id: string) { }
 }
