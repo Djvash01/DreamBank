@@ -1,0 +1,48 @@
+@import '../../../styles.scss';
+
+.underline-title{
+    border-top-color: $secundary;
+    border-top-width: 3px !important;
+    border-radius: 100px !important;
+    width: 10%;
+}
+
+.title-dark{
+    font-size: 44px;
+    font-weight: 400;
+    margin: 1em;
+}
+
+mat-hint{
+    color: white !important;
+}
+
+.input-color{
+    color: white;
+}
+
+::ng-deep .mat-select-value{    
+    color: white!important;  
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+
+
+mat-option{
+    color:white !important;
+    background-color: $primary !important;
+ }
+
+ mat-option:hover{
+    background-color: $secundary !important;
+ }
+
+mat-label{
+    color: white;
+}
+
+.container-form{
+    margin: 2em 0;
+}

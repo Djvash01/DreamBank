@@ -14,6 +14,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -35,7 +36,8 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatBadgeModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   exports: [
     MatButtonModule, 
@@ -51,7 +53,8 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatBadgeModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
 })
 export class AngularMaterialModule {}

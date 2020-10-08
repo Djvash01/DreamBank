@@ -1,1 +1,40 @@
-<p>new-product works!</p>
+<div fxLayout="column" fxLayoutAlign="start center">
+    <h1>Request</h1>
+    <mat-divider class="underline-title"></mat-divider>
+    <span class="title-dark">New Product</span>
+    <span>Instant payments and a lot of withdrawal methods available</span>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center stretch">
+    <form 
+  class="container-form"
+  (ngSubmit)="submit()"
+  [formGroup]="form"
+  fxLayout="column"
+  fxLayoutGap="15px"
+  fxLayoutAlign="center stretch"
+  fxFlex="40%"
+>
+    <mat-form-field appearance="outline" color="accent">
+        <mat-label>Product</mat-label>
+        <mat-select formControlName="product" class="input-color">
+            <mat-option *ngFor="let product of productsList" [value]="product">
+              {{product | titlecase }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+  <mat-form-field appearance="outline" color="accent">
+    <mat-label>CellPhone</mat-label>
+    <input type="text" matInput formControlName="cellphone" />
+    <mat-hint>Write the number you want to be contacted at</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline" color="accent">
+    <mat-label>Monthly Income</mat-label>
+    <input type="text" matInput formControlName="monthly" />
+    <span matSuffix>USD</span>
+    <mat-hint>Give us an average income</mat-hint>
+  </mat-form-field>
+  <button mat-raised-button color="accent">Send</button>
+  <button mat-button color="accent">Cancel</button>
+</form>
+</div>
