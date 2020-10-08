@@ -24,6 +24,7 @@ export class UserState {
   constructor(){}
 
   @Selector()
+  @ImmutableSelector()
   static getUserData(state: UserStateModel){
     return state.user;
   }

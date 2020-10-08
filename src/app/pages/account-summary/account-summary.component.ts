@@ -33,7 +33,7 @@ export class AccountSummaryComponent implements OnInit {
   }
   
   ngOnDestroy() {
-    this.suscription.unsubscribe();
+    if(this.suscription)this.suscription.unsubscribe();
    }
 
 }
