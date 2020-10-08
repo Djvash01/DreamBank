@@ -16,7 +16,8 @@ const routes: Routes = [
         component: AccountSummaryComponent
       }
     ] 
-  }
+  },
+  { path: 'products', loadChildren: () => import('../products/products.module').then(m => m.ProductsModule) }
 ];
 
 @NgModule({
