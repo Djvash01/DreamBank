@@ -10,6 +10,6 @@ export class ProductsService {
   constructor(private httpClient: HttpClient) { }
 
   requestNewProduct(body){
-    return this.httpClient.post<any>(`${environment.apiUrlRoot}/transactions`,body);
+    return this.httpClient.post<any>(`${environment.apiUrlRoot}/newProduct`,body);
   }
 }

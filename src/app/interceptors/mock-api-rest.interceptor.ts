@@ -159,6 +159,8 @@ export class MockApiRestInterceptor implements HttpInterceptor {
         return this.getAccountsByUser(body, headers);
       case (url.endsWith('/transactions') && method === 'POST'):
         return this.getTransacctions(body, headers);     
+      case (url.endsWith('/newProduct') && method === 'POST'):
+        return this.getNewProduct(body, headers);     
       default:
         return next.handle(request);
     }
@@ -186,6 +188,23 @@ export class MockApiRestInterceptor implements HttpInterceptor {
     const filteredTransaction = transactions.filter(item => item.idAccount === idAccount);
     if(!filteredTransaction)return this.errorResponse('Without transactions');    
     return this.successResponse(filteredTransaction);
+  }
+
+  getNewProduct(body, headers){
+    if(!this.isLoggedIn(headers))return this.unauthorized();
+    const {id, product, cellphone, monthly } = body;
+    let user = allAccounts.find(item => item.idUser === id);
+    user.accountsUser.push({
+      id:`${Math.random()*Math.pow(10, 9)} `,
+      name:'unknown',
+      type: product,
+      icon: 'credit_card',
+      status: 'Pending',
+      currency: 'USD',
+      balance: monthly,
+      transactions: []
+    });
+    return this.successResponse();
   }
 
    errorResponse(message) {
