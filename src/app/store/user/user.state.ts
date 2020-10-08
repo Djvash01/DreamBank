@@ -21,7 +21,7 @@ const defaults = {
 @Injectable()
 export class UserState {
 
-  constructor(private accountService:AccountService){}
+  constructor(){}
 
   @Selector()
   static getUserData(state: UserStateModel){
@@ -39,14 +39,10 @@ export class UserState {
 
   @Action(getUserAccounts)
   @ImmutableContext()
-  getUserAccounts({setState}:StateContext<UserStateModel>, { id }:getUserAccounts){
-    this.accountService.getAccounts(id).pipe(
-      tap((res) => {
-        setState((state:UserStateModel) => {
-          state.user.accounts = res;
-          return state;
-        })
-      })
-    );
+  getUserAccounts({setState}:StateContext<UserStateModel>, { accounts }:getUserAccounts){
+    setState((state:UserStateModel) => {
+      state.user.accounts = accounts;
+      return state;
+    })
   }
 }
