@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Store, Select } from '@ngxs/store';
 import { AuthService } from 'src/app/services/auth.service';
 import { ParticlesConfig } from 'src/app/shared/particles/particles-config';
-import { getUser } from 'src/app/store/user/user.actions';
+import { GetUser } from 'src/app/store/user/user.actions';
 
 declare const particlesJS: any;
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.authService.signin(this.loginForm.value).subscribe(
       res => {
         sessionStorage.setItem('Authorization', res.token);
-        this.store.dispatch(new getUser(res.user))
+        this.store.dispatch(new GetUser(res.user))
         this.router.navigate(['dashboard']);
     },
     err => {

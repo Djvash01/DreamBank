@@ -4,7 +4,8 @@ import { Observable, Subscription } from 'rxjs';
 import { Account } from 'src/app/models/account.model';
 import { User } from 'src/app/models/user.model';
 import { AccountService } from 'src/app/services/account.service';
-import { getUserAccounts } from 'src/app/store/user/user.actions';
+import { TransactionService } from 'src/app/services/transaction.service';
+import { GetTransactions } from 'src/app/store/user/user.actions';
 import { UserState } from 'src/app/store/user/user.state';
 
 @Component({
@@ -20,19 +21,15 @@ export class AccountSummaryComponent implements OnInit {
 
   suscription: Subscription;
 
-  constructor(private store: Store, private accountService:AccountService) { }
+  constructor(private store: Store, private transactionService:TransactionService) { }
 
   ngOnInit(): void {
-    this.suscription = this.$userData.subscribe(
-      (user) => {
-        if(user && user.id) this.accountService.getAccounts(user.id)
-        .subscribe(res => this.store.dispatch(new getUserAccounts(res)));
-    });
+    
   }
 
   showTransactions(account: Account){
-    console.log('dentro de la tabla',account);
-    
+    this.transactionService.getAllTransactions(account.id)
+        .subscribe(res => this.store.dispatch(new GetTransactions(account.id, res)));    
   }
   
   ngOnDestroy() {

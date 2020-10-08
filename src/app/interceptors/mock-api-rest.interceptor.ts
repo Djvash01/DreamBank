@@ -29,7 +29,7 @@ let allAccounts =  [{
   idUser:'123456',
   accountsUser: [
       {
-          id: '1234557121',
+          id: '666555444',
           name: "travel",
           icon: "payments",
           type: "Checking",
@@ -38,7 +38,7 @@ let allAccounts =  [{
           balance: 3500,
           transactions: []
       },{
-          id: '9991212',
+          id: '777444555',
           name: "University",
           icon: "credit_card",
           type: "Saving",
@@ -47,7 +47,7 @@ let allAccounts =  [{
           balance: 600.5,
           transactions: []
       },{
-          id: '12124121',
+          id: '66655444',
           name: "npi",
           icon: "credit_card",
           type: "Saving",
@@ -73,6 +73,78 @@ let allAccounts =  [{
   }]  
 }];
 
+let transactions = [{
+  id: '1',
+  idAccount: '666555444',
+  date: new Date(2020,10,8),
+  description: 'Nexflix',
+  currency: 'USD',
+  value: 300
+},{
+  id: '2',
+  idAccount: '666555444',
+  date: new Date(2020,9,30),
+  description: 'Pullandbear',
+  currency: 'USD',
+  value: -500
+},{
+  id: '3',
+  idAccount: '666555444',
+  date: new Date(2020,9,4),
+  description: 'Mercadolibre',
+  currency: 'USD',
+  value: 1000
+},{
+  id: '4',
+  idAccount: '666555444',
+  date: new Date(2020,8,5),
+  description: 'Facebook',
+  currency: 'USD',
+  value: -200
+},{
+  id: '5',
+  idAccount: '666555444',
+  date: new Date(2020,7,3),
+  description: 'Aliexpress',
+  currency: 'USD',
+  value: 65
+},{
+  id: '6',
+  idAccount: '666555444',
+  date: new Date(2020,5,6),
+  description: 'PSN',
+  currency: 'USD',
+  value: -250
+},{
+  id: '7',
+  idAccount: '666555444',
+  date: new Date(2020,3,23),
+  description: 'Rappi',
+  currency: 'USD',
+  value: -10
+},{
+  id: '8',
+  idAccount: '666555444',
+  date: new Date(2020,1,27),
+  description: 'Mercadolibre',
+  currency: 'USD',
+  value: 785
+},{
+  id: '9',
+  idAccount: '666555444',
+  date: new Date(2020,1,25),
+  description: 'Amazon',
+  currency: 'USD',
+  value: 548
+},{
+  id: '10',
+  idAccount: '666555444',
+  date: new Date(2020,1,1),
+  description: 'Netflix',
+  currency: 'USD',
+  value: -698
+}];
+
 @Injectable()
 export class MockApiRestInterceptor implements HttpInterceptor {
 
@@ -84,7 +156,9 @@ export class MockApiRestInterceptor implements HttpInterceptor {
       case (url.endsWith('/signin') && method === 'POST'):
         return this.signin(body);    
       case (url.endsWith('/accounts') && method === 'POST'):
-        return this.getAccountsByUser(body, headers);    
+        return this.getAccountsByUser(body, headers);
+      case (url.endsWith('/transactions') && method === 'POST'):
+        return this.getTransacctions(body, headers);     
       default:
         return next.handle(request);
     }
@@ -104,6 +178,14 @@ export class MockApiRestInterceptor implements HttpInterceptor {
     const id = body;
     const accounts = allAccounts.find(item =>item.idUser === id);    
     return this.successResponse(accounts.accountsUser);
+  }
+
+  getTransacctions(body, headers){
+    if(!this.isLoggedIn(headers))return this.unauthorized();
+    const idAccount = body;
+    const filteredTransaction = transactions.filter(item => item.idAccount === idAccount);
+    if(!filteredTransaction)return this.errorResponse('Without transactions');    
+    return this.successResponse(filteredTransaction);
   }
 
    errorResponse(message) {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { User } from 'src/app/models/user.model';
 import { AccountService } from 'src/app/services/account.service';
-import { getUser, getUserAccounts } from './user.actions';
+import { GetTransactions, GetUser, GetUserAccounts } from './user.actions';
 import { tap } from 'rxjs/operators';
 import { ImmutableContext, ImmutableSelector } from '@ngxs-labs/immer-adapter';
 
@@ -28,8 +28,8 @@ export class UserState {
     return state.user;
   }
 
-  @Action(getUser)
-  getUser({getState,setState}:StateContext<UserStateModel>, { payload }:getUser){
+  @Action(GetUser)
+  getUser({getState,setState}:StateContext<UserStateModel>, { payload }:GetUser){
     const state = getState();
     setState({
       ...state,
@@ -37,11 +37,21 @@ export class UserState {
     });
   }
 
-  @Action(getUserAccounts)
+  @Action(GetUserAccounts)
   @ImmutableContext()
-  getUserAccounts({setState}:StateContext<UserStateModel>, { accounts }:getUserAccounts){
+  getUserAccounts({setState}:StateContext<UserStateModel>, { accounts }:GetUserAccounts){
     setState((state:UserStateModel) => {
       state.user.accounts = accounts;
+      return state;
+    })
+  }
+
+  @Action(GetTransactions)
+  @ImmutableContext()
+  getTransactions({setState}:StateContext<UserStateModel>, { idAccount ,transactions }:GetTransactions){
+    setState((state:UserStateModel) => {
+      const indexAccount= state.user.accounts.findIndex(account => account.id === idAccount);
+      state.user.accounts[indexAccount].transactions = transactions 
       return state;
     })
   }
