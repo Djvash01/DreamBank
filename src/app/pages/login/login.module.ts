@@ -19,10 +19,7 @@ import { environment } from 'src/environments/environment';
     AngularMaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    FormsModule,
-    NgxsModule.forRoot([UserState],
-      { developmentMode: !environment.production }
-    )
+    FormsModule
   ]
 })
 export class LoginModule { }
