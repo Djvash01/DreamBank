@@ -7,10 +7,11 @@ import { NewProductComponent } from '../../components/new-product/new-product.co
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SuccessRequesstComponent } from '../../components/success-requesst/success-requesst.component';
 
 
 @NgModule({
-  declarations: [ProductsComponent, NewProductComponent],
+  declarations: [ProductsComponent, NewProductComponent, SuccessRequesstComponent],
   imports: [
     CommonModule,
     ProductsRoutingModule,

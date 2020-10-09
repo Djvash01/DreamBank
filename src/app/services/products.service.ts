@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -7,9 +8,11 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   requestNewProduct(body){
-    return this.httpClient.post<any>(`${environment.apiUrlRoot}/newProduct`,body);
+    this.httpClient.post<any>(`${environment.apiUrlRoot}/newProduct`,body).subscribe(res =>{
+      this.router.navigate(['/dashboard/products/success']);
+    });
   }
 }
