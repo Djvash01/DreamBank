@@ -1,0 +1,37 @@
+<mat-sidenav class="sidenav-container" mode="side" opened>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <span class="logo">($</span>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="40px">
+    <div fxLayout="column" fxLayoutAlign="center stretch">
+      <div class="font-cyan-14 sub-header">ACCOUNT</div>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let option of options.accounts" routerLinkActive="active">
+          <a matLine [routerLink]="option.link" >
+            {{ option.description }}
+          </a>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center stretch">
+      <div class="font-cyan-14 sub-header">TRANSACTIONS</div>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let option of options.transactions" routerLinkActive="active">
+          <a matLine routerLink="/transactions">
+            {{ option }}
+          </a>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center stretch">
+      <div class="font-cyan-14 sub-header">SERVICES</div>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let option of options.services" routerLinkActive="active">
+          <a matLine routerLink="/services">
+            {{ option }}
+          </a>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </div>
+</mat-sidenav>

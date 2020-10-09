@@ -1,0 +1,23 @@
+<mat-toolbar class="info-toolbar" color="primary" *ngIf="$userData | async as user" fxLayout="row">
+    <div fxFlex="70%" fxLayoutAlign="space-between center" class="info-section">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+            <img class="avatar" [src]="user.avatar" alt="Avatar">
+            <div fxLayout="column">
+                <span class="info-title">Welcome back, {{user.name}}!</span>
+                <span class="info-subtitle">Your last login was {{user.lastLogin | date : 'medium'}}</span>
+            </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start center">
+            <span class="info-title">Total Balance</span>
+            <span>{{totalBalance | currency}}</span>
+        </div>
+    </div>
+    <div fxFlex="30%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <button mat-stroked-button class="btn-account" color="accent" routerLink="/dashboard/products/newProduct">
+            Request new product
+        </button>
+        <button mat-stroked-button class="btn-account" color="accent">
+            Make a Transfer
+        </button>
+    </div>
+</mat-toolbar>

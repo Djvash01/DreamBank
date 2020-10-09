@@ -1,0 +1,144 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$DreamBank-primary: mat-palette($mat-blue, 900);
+$DreamBank-accent: mat-palette($mat-cyan, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$DreamBank-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$DreamBank-theme: mat-light-theme((
+  color: (
+    primary: $DreamBank-primary,
+    accent: $DreamBank-accent,
+    warn: $DreamBank-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($DreamBank-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//particles
+div#particles-js canvas.particles-js-canvas-el {
+  border-radius: 0 0 100% 100% !important;
+}
+
+// Colors to all theme 
+$primary: #0D47A1;
+$primaryDark: #012b5e;
+$secundary: #18FFFF;
+$secundaryTransparent:  rgb(0, 241, 230, 0.2);
+$success: #5cb85c;
+$info: #021aee;
+
+//fonts
+.success{
+  color: $success;
+}
+
+.success-snackbar{
+  background-color: $secundary;
+  color: $primary;
+}
+
+.error-snackbar{
+  background-color: #F44336;
+  color: white;
+}
+
+
+.link-ref{
+  color: $primary;
+  cursor: pointer;
+}
+
+button{
+  border-radius: 20px !important;
+}
+
+footer{
+  margin-top: 10em;
+}
+
+.container-general{
+  margin-top: 8em;
+}
+
+.custom-subtitle{
+  font-weight: 500;
+  text-align: center;
+}
+
+.custom-title{
+  font-weight: 700;
+  text-align: center;
+  margin-top: 32px !important;
+  margin-bottom: 32px !important;
+}
+
+.font-blue-11{
+  color: $primary;
+  font-size: 11px;
+}
+
+.font-blue-14{
+  color: $primary;
+  font-size: 14px;
+}
+
+.font-cyan-14{
+  color: $secundary;
+  font-size: 14px;
+}
+
+.font-blue-24{
+  color: $primary;
+  font-size: 24px;
+}
+
+.font-cyan-24{
+  color: $secundary;
+  font-size: 24px;
+}
+
+.font-blue-44{
+  color: $primary;
+  font-size: 44px;
+}
+
+
+
+.text-login{
+  margin: 1em 0;
+  text-align: center;
+}
+
+
+
+.underline{
+  border-top-color: $secundary;
+  border-top-width: 3px !important;
+  border-radius: 100px !important;
+  margin: 10px 0 !important;
+  margin-left: 10% !important;
+  width: 80% !important;
+}
