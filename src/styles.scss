@@ -37,10 +37,7 @@ $DreamBank-theme: mat-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-//particles
-div#particles-js canvas.particles-js-canvas-el {
-  border-radius: 0 0 100% 100% !important;
-}
+
 
 // Colors to all theme 
 $primary: #0D47A1;
