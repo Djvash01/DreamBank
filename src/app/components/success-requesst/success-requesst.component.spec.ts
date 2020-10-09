@@ -11,7 +11,7 @@ import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-m
 
 import { SuccessRequesstComponent } from './success-requesst.component';
 
-fdescribe('SuccessRequesstComponent', () => {
+describe('SuccessRequesstComponent', () => {
   let component: SuccessRequesstComponent;
   let fixture: ComponentFixture<SuccessRequesstComponent>;
   let loader: HarnessLoader;
