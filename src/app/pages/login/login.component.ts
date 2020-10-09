@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store, Select } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { AuthService } from 'src/app/services/auth.service';
-import { ParticlesConfig } from 'src/app/shared/particles/particles-config';
 import { GetUser } from 'src/app/store/user/user.actions';
-
-declare const particlesJS: any;
 
 @Component({
   selector: 'app-login',
@@ -29,11 +26,6 @@ export class LoginComponent implements OnInit {
       login: ['', [Validators.pattern('[0-9]+'), Validators.required]],
       password: ['', Validators.required]
     });
-
-    if(particlesJS){
-      particlesJS('particles-js', ParticlesConfig, function() {});
-    }
-
   }
 
   submit(){
