@@ -5,6 +5,9 @@ import { Store } from '@ngxs/store';
 import { AuthService } from 'src/app/services/auth.service';
 import { GetUser } from 'src/app/store/user/user.actions';
 
+declare let particlesJS: any;
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,6 +28,9 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       login: ['', [Validators.pattern('[0-9]+'), Validators.required]],
       password: ['', Validators.required]
+    });
+    particlesJS.load('particles-js', 'assets/particles/particles.json', function() {
+      console.log('callback - particles-js config loaded');
     });
   }
 
