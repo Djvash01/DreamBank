@@ -4,6 +4,7 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
+    files: ['node_modules/particles.js/particles.js'],
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),

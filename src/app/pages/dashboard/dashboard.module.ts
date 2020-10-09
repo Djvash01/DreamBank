@@ -9,10 +9,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SessionToolbarComponent } from '../../components/session-toolbar/session-toolbar.component';
 import { InfoToolbarComponent } from '../../components/info-toolbar/info-toolbar.component';
 import { AccountSummaryComponent } from '../account-summary/account-summary.component';
+import { TransactionsComponent } from '../../components/transactions/transactions.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, MenuComponent, SessionToolbarComponent, InfoToolbarComponent, AccountSummaryComponent],
+  declarations: [DashboardComponent, MenuComponent, SessionToolbarComponent, InfoToolbarComponent, AccountSummaryComponent, TransactionsComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
