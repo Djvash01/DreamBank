@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-success-requesst',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessRequesstComponent implements OnInit {
 
-  constructor() { }
+  constructor(private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+  }
+
+  showSuccessNotification(){
+    this.snackBar.open(
+      'We are studying your order, we will contact you soon'
+     ,'', 
+     {
+      panelClass: ['success-snackbar'],
+      duration: 4000
+     });
   }
 
 }
